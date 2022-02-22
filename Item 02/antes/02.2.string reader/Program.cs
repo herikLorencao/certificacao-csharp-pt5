@@ -15,7 +15,16 @@ namespace _02._2.string_reader
 
             string ingredientes = GetIngredientes();
 
-            Console.WriteLine(ingredientes);
+            using (StringReader stringReader = new StringReader(ingredientes))
+            {
+                Console.OutputEncoding = System.Text.Encoding.UTF8;
+                
+                string line;
+                while ((line = stringReader.ReadLine()) != null)
+                {
+                    Console.WriteLine("• " + line);
+                }
+            }
 
             Console.ReadKey();
         }

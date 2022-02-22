@@ -17,12 +17,17 @@ namespace _02._3.string_writer
 
             string ingredientes = GetIngredientes();
 
-            using (StringReader stringReader = new StringReader(ingredientes))
+            using (StringWriter stringWriter = new StringWriter())
             {
-                string line;
-                while ((line = stringReader.ReadLine()) != null)
+                using (StringReader stringReader = new StringReader(ingredientes))
                 {
-                    Console.WriteLine("• " + line);
+                    string line;
+                    while ((line = stringReader.ReadLine()) != null)
+                    {
+                        stringWriter.WriteLine("• " + line);
+                    }
+
+                    Console.WriteLine(stringWriter);
                 }
             }
 
@@ -32,7 +37,7 @@ namespace _02._3.string_writer
         private static string GetIngredientes()
         {
             return
-            @"3 cenouras médias raspadas e picadas
+                @"3 cenouras médias raspadas e picadas
 3 ovos
 1 xícara de óleo
 2 xícaras de açúcar
