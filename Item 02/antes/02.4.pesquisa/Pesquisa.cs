@@ -48,9 +48,9 @@ namespace _02._4.pesquisa
         private string Contem()
         {
             //txtPesquisa: caixa de texto do Windows Forms
-            var textoBusca = parametros.FirstOrDefault();
+            var textoBusca = parametros.FirstOrDefault() ?? string.Empty;
 
-            bool contem = false; //implementar busca
+            bool contem = txtPesquisa.Text.Contains(textoBusca);
 
             if (contem)
             {
@@ -64,9 +64,9 @@ namespace _02._4.pesquisa
 
         private string ComecaCom()
         {
-            var textoBusca = parametros.FirstOrDefault();
+            var textoBusca = parametros.FirstOrDefault() ?? string.Empty;
 
-            bool comecaCom = false; //implementar busca
+            bool comecaCom = txtPesquisa.Text.StartsWith(textoBusca);
 
             if (comecaCom)
             {
@@ -80,9 +80,9 @@ namespace _02._4.pesquisa
 
         private string TerminaCom()
         {
-            var textoBusca = parametros.FirstOrDefault();
+            var textoBusca = parametros.FirstOrDefault() ?? string.Empty;
 
-            var terminaCom = false; //implementar busca
+            var terminaCom = txtPesquisa.Text.EndsWith(textoBusca);
 
             if (terminaCom)
             {
@@ -96,9 +96,9 @@ namespace _02._4.pesquisa
 
         private string IndiceDe()
         {
-            var textoBusca = parametros.FirstOrDefault();
+            var textoBusca = parametros.FirstOrDefault() ?? string.Empty;
 
-            //indiceDe = ???; //implementar busca
+            indiceDe = txtPesquisa.Text.IndexOf(textoBusca, StringComparison.CurrentCulture);
 
             if (indiceDe == -1)
             {
@@ -112,9 +112,9 @@ namespace _02._4.pesquisa
 
         private string UltimoIndiceDe()
         {
-            var textoBusca = parametros.FirstOrDefault();
+            var textoBusca = parametros.FirstOrDefault() ?? string.Empty;
 
-            //indiceDe = ???; //implementar busca
+            indiceDe = txtPesquisa.Text.LastIndexOf(textoBusca, StringComparison.CurrentCulture);
 
             if (indiceDe == -1)
             {
@@ -131,10 +131,10 @@ namespace _02._4.pesquisa
             int.TryParse(parametros[0], out int indiceInicial);
             int.TryParse(parametros[1], out int comprimento);
 
-            //txtPesquisa.SelectionStart = ???
-            //txtPesquisa.SelectionLength = ???
+            // txtPesquisa.SelectionStart = indiceInicial;
+            // txtPesquisa.SelectionLength = comprimento;
 
-            string trecho = ""; //implementar busca
+            string trecho = txtPesquisa.Text.Substring(indiceInicial, comprimento);
 
             return "O trecho selecionado é: " + trecho;
         }
@@ -144,7 +144,7 @@ namespace _02._4.pesquisa
             var antigoTexto = parametros[0];
             var novoTexto = parametros[1];
 
-            //txtPesquisa.Text = ??? implementar substituição
+            txtPesquisa.Text = txtPesquisa.Text.Replace(antigoTexto, novoTexto);
 
             return "Trecho substituído com sucesso.";
         }
